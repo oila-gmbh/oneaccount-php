@@ -1,5 +1,5 @@
 {
-  "name": "iznaurbeksultanov/oneaccount-php",
+  "name": "oilastudio/oneaccount-php",
   "description": "Oneaccount SDK",
   "type": "library",
   "require": {
