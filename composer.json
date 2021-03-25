@@ -11,5 +11,10 @@
       "name": "Oneaccount",
       "email": "contact@oneaccount.app"
     }
-  ]
+  ],
+  "autoload": {
+    "files": [
+      "getallheaders.php"
+    ]
+  }
 }

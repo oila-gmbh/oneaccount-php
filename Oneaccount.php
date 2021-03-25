@@ -1,21 +1,16 @@
 <?php
 
-
 use GuzzleHttp\Client;
 
 final class Oneaccount
 {
-    private Client $client;
+    private $client;
     /**
      * @var EngineInterface
      */
-    private EngineInterface $engine;
-    /**
-     * @var array
-     */
-    private array $options;
+    private $engine;
 
-    private string $verifyURL = "https://api.oneaccount.app/widget/verify";
+    private $verifyURL = "https://api.oneaccount.app/widget/verify";
 
     public function __construct(EngineInterface $engine)
     {
@@ -23,31 +18,35 @@ final class Oneaccount
         $this->engine = $engine;
     }
 
-
-    public function auth(?string $token, array $body)
+    public function auth()
     {
-        if (!$body['uuid']) {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $data = $data ?: $_POST;
+        $headers = getallheaders();
+
+        if (!$data['uuid']) {
             throw new InvalidArgumentException("the uuid field is required");
         }
-        if (null === $token) {
-            $this->engine->set($body['uuid'], $body);
+        if ($headers['Authorization'] === null) {
+            $this->engine->set($data['uuid'], $data);
 
             return false;
-        } else {
-            if (!$this->verify($token, $body['uuid'])) {
-                throw new RuntimeException("incorrect token");
-            }
-            return $this->engine->get($body['uuid']);
         }
+
+
+        if (!$this->verify($headers['Authorization'], $data['uuid'])) {
+            throw new RuntimeException("incorrect token");
+        }
+        return $this->engine->get($data['uuid']);
     }
 
-    public function verify(string $token, string $uuid)
+    public function verify($token, $uuid)
     {
         try {
             $response = $this->client->post(
                 $this->verifyURL,
                 [
-                    'auth' => $token,
+                    'headers' => ['Authorization' => $token],
                     'json' => ['uuid' => $uuid]
                 ]
             );
@@ -55,6 +54,6 @@ final class Oneaccount
             return false;
         }
 
-        return 200 === $response->getStatusCode();
+        return $response->getStatusCode() === 200;
     }
 }
