@@ -13,8 +13,11 @@
     }
   ],
   "autoload": {
+    "psr-4": {
+      "Oilastudio\\Oneaccount\\": "src/"
+    },
     "files": [
-      "getallheaders.php"
+      "src/getallheaders.php"
     ]
   }
 }

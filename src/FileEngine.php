@@ -1,5 +1,6 @@
 <?php
 
+namespace Oilastudio\Oneaccount;
 
 final class FileEngine implements EngineInterface
 {

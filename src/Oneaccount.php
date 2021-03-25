@@ -1,5 +1,7 @@
 <?php
 
+namespace Oilastudio\Oneaccount;
+
 use GuzzleHttp\Client;
 
 final class Oneaccount
