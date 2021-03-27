@@ -1,6 +1,7 @@
 {
   "name": "oilastudio/oneaccount-php",
   "description": "Oneaccount PHP",
+  "keywords": ["convenient","secure","privacy","authentication","login","sign in","sign up","2fa","mfa"],
   "type": "library",
   "require": {
     "guzzlehttp/guzzle": "^7.0",
@@ -9,6 +10,7 @@
   "authors": [
     {
       "name": "Oila Studio",
+      "homepage": "http://oneaccount.app"
       "email": "contact@oneaccount.app"
     }
   ],
