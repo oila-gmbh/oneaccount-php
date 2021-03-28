@@ -29,7 +29,7 @@ final class Oneaccount
         $data = $data ?: $_POST;
         $headers = getallheaders();
 
-        if (!$data['uuid']) {
+        if (!isset($data['uuid'])) {
             throw new InvalidArgumentException("the uuid field is required");
         }
         if ($headers['Authorization'] === null) {
