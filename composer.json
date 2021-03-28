@@ -1,14 +1,17 @@
 {
   "name": "oilastudio/oneaccount-php",
-  "description": "Oneaccount SDK",
+  "description": "Oneaccount PHP",
+  "keywords": ["convenient","secure","privacy","authentication","login","sign in","sign up","2fa","mfa"],
   "type": "library",
+  "license": "MIT",
   "require": {
     "guzzlehttp/guzzle": "^7.0",
     "ext-json": "*"
   },
   "authors": [
     {
-      "name": "Oneaccount",
+      "name": "Oila Studio",
+      "homepage": "http://oneaccount.app",
       "email": "contact@oneaccount.app"
     }
   ],
