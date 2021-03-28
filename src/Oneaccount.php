@@ -3,6 +3,9 @@
 namespace Oilastudio\Oneaccount;
 
 use GuzzleHttp\Client;
+use InvalidArgumentException;
+use RuntimeException;
+use Throwable;
 
 final class Oneaccount
 {
