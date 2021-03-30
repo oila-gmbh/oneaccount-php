@@ -32,7 +32,7 @@ final class Oneaccount
         if (!isset($data['uuid'])) {
             throw new InvalidArgumentException("the uuid field is required");
         }
-        if ($headers['Authorization'] === null) {
+        if (!isset($headers['Authorization'])) {
             $this->engine->set($data['uuid'], $data);
 
             return false;
