@@ -42,7 +42,15 @@ final class Oneaccount
         if (!$this->verify($headers['Authorization'], $data['uuid'])) {
             throw new RuntimeException("incorrect token");
         }
-        return $this->engine->get($data['uuid']);
+        $data = $this->engine->get($data['uuid']);
+
+        if (isset($data['externalId'])) {
+            unset($data['externalId']);
+        }
+        if (isset($data['uuid'])) {
+            unset($data['uuid']);
+        }
+        return $data;
     }
 
     public function verify($token, $uuid)
